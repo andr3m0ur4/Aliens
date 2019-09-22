@@ -1,66 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Aliens Abducted Me</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-<body>
-  <h2>Aliens Abducted Me</h2>
-  <p>Welcome, have you had an encounter with extraterrestrials? Were you abducted? Have you seen my abducted dog, Fang? <a href="report.php">Report it here!</a></p>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Alienígenas Me Abduziram</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Aplicação WEB desenvolvido no curso de PHP com MySQL" />
+        <meta name="keywords" content="aliens php mysql abdução curso">
+        <meta name="autor" content="André Moura">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Alienígenas Me Abduziram</h2>
+        <p>
+            Bem vindo, você já teve um encontro com extraterrestres? Você já foi abduzido? Você viu o meu
+            cachorro abduzido, Fang? <a href="report.php">Relate isso aqui!</a>
+        </p>
 
-<?php
-  require_once('connectvars.php');
+        <?php
+            require_once 'connectvars.php';
 
-  // Connect to the database 
-  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME); 
+            // Conecta-se ao banco de dados 
+            $dbc = mysqli_connect ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ); 
 
-  // See if we're viewing a single report or all of the most recent reports
-  if (isset($_GET['abduction_id'])) {
-    $query = "SELECT * FROM aliens_abduction WHERE abduction_id = '" . $_GET['abduction_id'] . "'";
-  }
-  else {
-    $query = "SELECT * FROM aliens_abduction ORDER BY when_it_happened DESC LIMIT 5";
-  }
-  $data = mysqli_query($dbc, $query);
+            // Verificar se estamos visualizando um relatório único ou todos os relatórios mais recentes
+            if ( isset ( $_GET['abduction_id'] ) ) {
+                $query = "SELECT * FROM aliens_abduction WHERE abduction_id = '{$_GET['abduction_id']}'";
+            } else {
+                $query = "SELECT * FROM aliens_abduction ORDER BY when_it_happened DESC LIMIT 5";
+            }
+            $data = mysqli_query ( $dbc, $query );
 
-  if (mysqli_num_rows($data) == 1) {
-    // Show the details for this single abduction
-    $row = mysqli_fetch_array($data);
-    echo '<p><strong>Name: </strong>' . $row['first_name'] . ' ' . $row[last_name] . '<br />';
-    echo '<strong>Date:</strong> ' . $row['when_it_happened'] . '<br />';
-    echo '<strong>Email:</strong> ' . $row['email'] . '<br />';
-    echo '<strong>Abducted for:</strong> ' . $row['how_long'] . '<br />';
-    echo '<strong>Number of aliens:</strong> ' . $row['how_many'] . '<br />';
-    echo '<strong>Alien description:</strong> ' . $row['alien_description'] . '<br />';
-    echo '<strong>What happened:</strong> ' . $row['what_they_did'] . '<br />';
-    echo '<strong>Other:</strong> ' . $row['other'] . '<br />';
-    echo '<strong>Fang spotted:</strong> ' . $row['fang_spotted'] . '</p>';
-    echo '<p><a href="index.php">&lt;&lt; Back to the home page</a></p>';
-  }
-  else {
-    echo '<h4>Most recent reported abductions:</h4>';
+            if ( mysqli_num_rows ( $data ) == 1) {
+                // Revela os detalhes para esta única abdução
+                $row = mysqli_fetch_assoc ( $data );
+                echo "<p><strong>Nome: </strong> {$row['first_name']} {$row['last_name']}<br />";
+                echo "<strong>Data:</strong> {$row['when_it_happened']}<br />";
+                echo "<strong>Email:</strong> {$row['email']}<br />";
+                echo "<strong>Abduzido por:</strong> {$row['how_long']}<br />";
+                echo "<strong>Número de alienígenas:</strong> {$row['how_many']}<br />";
+                echo "<strong>Descrição alienígena:</strong> {$row['alien_description']}<br />";
+                echo "<strong>O que aconteceu:</strong> {$row['what_they_did']}<br />";
+                echo "<strong>Outra informação:</strong> {$row['other']}<br />";
+                echo "<strong>Viu Fang:</strong> {$row['fang_spotted']}</p>";
+                echo '<p><a href="index.php">&lt;&lt; Voltar à página principal</a></p>';
+            } else {
+                echo '<h4>Relatório das abduções mais recentes:</h4>';
 
-    // Loop through the array of alien abductions, formatting them as HTML
-    echo '<table width="100%">';
-    while ($row = mysqli_fetch_array($data)) { 
-      // Display each row as a table row
-      echo '<tr class="heading"><td colspan="3"><a href="index.php?abduction_id=' . $row['abduction_id'] . '">' . $row['when_it_happened'] . ' : ' . $row['first_name'] . ' ' . $row[last_name] . '</a></td></tr>';
-      echo '<tr><td><strong>Abducted for:</strong><br /> ' . $row['how_long'];
-      echo '<td><strong>Alien description:</strong><br /> ' . $row['alien_description'];
-      echo '<td><strong>Fang spotted:</strong><br /> ' . $row['fang_spotted'] . '</td></tr>';
-    }
-    echo '</table>';
+                // Busca através do vetor das abduções alienígenas, formatando elas em HTML
+                echo '<table width="100%">';
+                while ( $row = mysqli_fetch_assoc ( $data ) ) { 
+                // Exibe cada linha como uma linha da tabela
+                echo "<tr class='heading'>
+                        <td colspan='3'>
+                            <a href='index.php?abduction_id={$row['abduction_id']}'>
+                                {$row['when_it_happened']} : {$row['first_name']} {$row['last_name']}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Abduzido por:</strong><br /> {$row['how_long']}</td>
+                        <td><strong>Descrição alienígena:</strong><br /> {$row['alien_description']}</td>
+                        <td><strong>Viu Fang:</strong><br /> {$row['fang_spotted']}</td>
+                    </tr>";
+                }
+                echo '</table>';
 
-    echo '<p><a href="newsfeed.php"><img style="vertical-align:top; border:none" src="rssicon.png" alt="Syndicate alien abductions"> Click to syndicate the abduction news feed.</a></p>';
+                echo '<p>
+                        <a href="newsfeed.php"><img style="vertical-align:top; border:none" 
+                            src="image/rssicon.png" alt="Sindicato das abduções alienígenas"> Clique para
+                            sindicalizar o feed de notícas de abduções.
+                        </a>
+                    </p>';
 
-    echo '<h4>Most recent abduction videos:</h4>';
-    require_once('youtube.php');
-  }
+                echo '<h4>Vídeos de abduções mais recentes:</h4>';
+                require_once 'youtube.php';
+            }
 
-  mysqli_close($dbc);
-?>
+            mysqli_close ( $dbc );
+        ?>
 
-</body> 
+    </body> 
 </html>
