@@ -22,7 +22,8 @@
             require_once 'connectvars.php';
 
             // Conecta-se ao banco de dados 
-            $dbc = mysqli_connect ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ); 
+            $dbc = mysqli_connect ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+            mysqli_set_charset ( $dbc, 'utf8');
 
             // Verificar se estamos visualizando um relatório único ou todos os relatórios mais recentes
             if ( isset ( $_GET['abduction_id'] ) ) {

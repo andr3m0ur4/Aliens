@@ -22,6 +22,7 @@
             if ( isset ( $_POST['submit'] ) ) {
                 // Conecta-se ao banco de dados
                 $dbc = mysqli_connect ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+                mysqli_set_charset ( $dbc, 'utf8');
 
                 // Obtém os dados do relatório do POST
                 $first_name = mysqli_real_escape_string ( $dbc, trim ( $_POST['firstname'] ) );

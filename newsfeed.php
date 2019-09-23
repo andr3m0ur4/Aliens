@@ -14,6 +14,7 @@
 
             // Conecta-se ao banco de dados
             $dbc = mysqli_connect ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+            mysqli_set_charset ( $dbc, 'utf8');
 
             // Recupera os dados de aparições alienígenas do MySQL
             $query = "SELECT abduction_id, first_name, last_name, DATE_FORMAT( when_it_happened, 
