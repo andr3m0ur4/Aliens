@@ -2,6 +2,8 @@
 
     $alien = new AlienAbduction ( );
 
+    $error = false;
+
     if ( isset ( $_POST['submit'] ) ) {
 
         // Obtém os dados do relatório do POST
@@ -23,17 +25,10 @@
             AND !empty ( $alien -> getWhatTheyDid ( ) ) 
         ) {
             // Gravar os dados no banco de dados
-            $dal -> save ( $alien );
-                    
-            // Confirma o sucesso com o usuário
-            $success = '<p>Obrigado por adicionar sua abdução.</p>' . 
-                '<p><a href="index.php">&lt;&lt; Voltar à página principal</a></p>';
-                
+            $success = $dal -> save ( $alien );
+    
         } else {
-            $error = '<p class="error">
-                        Por favor digite seu nome completo, data da abdução, quanto tempo você ficou
-                        abduzido, e uma breve descrição dos alienígenas.
-                    </p>';
+            $error = true; 
         }
     }
 

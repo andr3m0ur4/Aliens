@@ -1,6 +1,7 @@
 <?php 
 
-class AlienAbduction {
+class AlienAbduction 
+{
 
 	private $abduction_id;
 	private $first_name;
@@ -14,91 +15,113 @@ class AlienAbduction {
 	private $other;
 	private $email;
 
-	public function setAbductionId ( $value ) {
+	public function setAbductionId ( $value ) 
+	{
 		$this -> abduction_id = ( int ) $value;
 	}
 
-	public function getAbductionId ( ) {
+	public function getAbductionId ( ) 
+	{
 		return $this -> abduction_id;
 	}
 
-	public function setFirstName ( $value ) {
+	public function setFirstName ( $value ) 
+	{
 		$this -> first_name = $value;
 	}
 
-	public function getFirstName ( ) {
+	public function getFirstName ( ) 
+	{
 		return $this -> first_name;
 	}
 
-	public function setLastName ( $value ) {
+	public function setLastName ( $value ) 
+	{
 		$this -> last_name = $value;
 	}
 
-	public function getLastName ( ) {
+	public function getLastName ( ) 
+	{
 		return $this -> last_name;
 	}
 
-	public function setWhenItHappened ( $value ) {
+	public function setWhenItHappened ( $value ) 
+	{
 		$this -> when_it_happened = $value;
 	}
 
-	public function getWhenItHappened ( ) {
+	public function getWhenItHappened ( ) 
+	{
 		return $this -> when_it_happened;
 	}
 
-	public function setHowLong ( $value ) {
+	public function setHowLong ( $value ) 
+	{
 		$this -> how_long = $value;
 	}
 
-	public function getHowLong ( ) {
+	public function getHowLong ( ) 
+	{
 		return $this -> how_long;
 	}
 
-	public function setHowMany ( $value ) {
+	public function setHowMany ( $value ) 
+	{
 		$this -> how_many = $value;
 	}
 
-	public function getHowMany ( ) {
+	public function getHowMany ( ) 
+	{
 		return $this -> how_many;
 	}
 
-	public function setAlienDescription ( $value ) {
+	public function setAlienDescription ( $value ) 
+	{
 		$this -> alien_description = $value;
 	}
 
-	public function getAlienDescription ( ) {
+	public function getAlienDescription ( ) 
+	{
 		return $this -> alien_description;
 	}
 
-	public function setWhatTheyDid ( $value ) {
+	public function setWhatTheyDid ( $value ) 
+	{
 		$this -> what_they_did = $value;
 	}
 
-	public function getWhatTheyDid ( ) {
+	public function getWhatTheyDid ( ) 
+	{
 		return $this -> what_they_did;
 	}
 
-	public function setFangSpotted ( $value ) {
+	public function setFangSpotted ( $value ) 
+	{
 		$this -> fang_spotted = $value;
 	}
 
-	public function getFangSpotted ( ) {
+	public function getFangSpotted ( ) 
+	{
 		return $this -> fang_spotted;
 	}
 
-	public function setOther ( $value ) {
+	public function setOther ( $value ) 
+	{
 		$this -> other = $value;
 	}
 
-	public function getOther ( ) {
+	public function getOther ( ) 
+	{
 		return $this -> other;
 	}
 
-	public function setEmail ( $value ) {
+	public function setEmail ( $value ) 
+	{
 		$this -> email = $value;
 	}
 
-	public function getEmail ( ) {
+	public function getEmail ( ) 
+	{
 		return $this -> email;
 	}
 }

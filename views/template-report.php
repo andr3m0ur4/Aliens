@@ -14,12 +14,18 @@
     <body>
         <h2>Alienígenas Me Abduziram - Relate uma Abdução</h2>
 
-        <?php if ( !empty ( $success ) ) : ?>
-            <?= $success ?>
+        <!-- Confirma o sucesso com o usuário -->
+        <?php if ( $success ) : ?>
+            <p>Obrigado por adicionar sua abdução.</p>
+            <p><a href="index.php">&lt;&lt; Voltar à página principal</a></p>
             <?php exit ( ); ?>
         <?php endif; ?>
-        <?php if ( !empty ( $error ) ) : ?>
-            <?= $error ?>
+        <!-- Notifica o usuário de possíveis erros -->
+        <?php if ( $error ) : ?>
+            <p class="error">
+                Por favor digite seu nome completo, data da abdução, quanto tempo você ficou
+                abduzido, e uma breve descrição dos alienígenas.
+            </p>
         <?php endif; ?>
 
         <p>Compartilhe sua história de abdução alienígena:</p>

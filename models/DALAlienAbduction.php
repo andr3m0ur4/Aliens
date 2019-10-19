@@ -1,16 +1,19 @@
 <?php 
 
-class DALAlienAbduction {
+class DALAlienAbduction 
+{
 
 	private $con;
 
-	public function __construct ( $con ) {
+	public function __construct ( $con ) 
+	{
 
 		$this -> con = $con;
 
 	}
 
-	public function select ( $abduction_id = 0, $limit = 0 ) {
+	public function select ( $abduction_id = 0, $limit = 0 ) 
+	{
 
 		if ( $abduction_id > 0 ) {
 			return $this -> select_alien_abduction ( $abduction_id );
@@ -21,7 +24,8 @@ class DALAlienAbduction {
 		}
 	}
 
-	public function select_all ( ) {
+	public function select_all ( ) 
+	{
 
 		$sql = "SELECT * FROM aliens_abduction ORDER BY when_it_happened DESC";
 
@@ -37,7 +41,8 @@ class DALAlienAbduction {
 
 	}
 
-	public function select_all_limit ( $limit ) {
+	public function select_all_limit ( $limit ) 
+	{
 
 		$sql = "SELECT * FROM aliens_abduction ORDER BY when_it_happened DESC LIMIT $limit";
 
@@ -53,7 +58,8 @@ class DALAlienAbduction {
 
 	}
 
-	public function select_alien_abduction ( $abduction_id ) {
+	public function select_alien_abduction ( $abduction_id ) 
+	{
 
 		$sql = "SELECT * FROM aliens_abduction WHERE abduction_id = '{$abduction_id}'";
 
@@ -65,7 +71,8 @@ class DALAlienAbduction {
 
 	}
 
-	public function save ( AlienAbduction $alien_abduction ) {
+	public function save ( AlienAbduction $alien_abduction ) 
+	{
 
 		$sql = "
 			INSERT INTO aliens_abduction 
@@ -89,6 +96,8 @@ class DALAlienAbduction {
         ";
 
         $this -> con -> query ( $sql );
+
+        return ( $this -> con -> affected_rows > 0 ) ? true : false;
 
 	}
 }
