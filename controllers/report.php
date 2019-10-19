@@ -1,0 +1,40 @@
+<?php
+
+    $alien = new AlienAbduction ( );
+
+    if ( isset ( $_POST['submit'] ) ) {
+
+        // Obtém os dados do relatório do POST
+        $alien -> setFirstName ( $con -> escape_string ( trim ( $_POST['firstname'] ) ) );
+        $alien -> setLastName ( $con -> escape_string ( trim ( $_POST['lastname'] ) ) );
+        $alien -> setEmail ( $con -> escape_string ( trim ( $_POST['email'] ) ) );
+        $alien -> setWhenItHappened ( $con -> escape_string ( trim ( $_POST['whenithappened'] ) ) );
+        $alien -> setHowLong ( $con -> escape_string ( trim ( $_POST['howlong'] ) ) );
+        $alien -> setHowMany ( $con -> escape_string ( trim ( $_POST['howmany'] ) ) );
+        $alien -> setAlienDescription ( $con -> escape_string ( trim ( $_POST['aliendescription'] ) ) );
+        $alien -> setWhatTheyDid ( $con -> escape_string ( trim ( $_POST['whattheydid'] ) ) );
+        $alien -> setFangSpotted( $con -> escape_string ( trim ( $_POST['fangspotted'] ?? '' ) ) );
+        $alien -> setOther ( $con -> escape_string ( trim ( $_POST['other'] ) ) );
+
+        if ( !empty ( $alien -> getFirstName ( ) ) 
+            AND !empty ( $alien -> getLastName ( ) ) 
+            AND !empty ( $alien -> getWhenItHappened ( ) ) 
+            AND !empty ( $alien -> getHowLong ( ) ) 
+            AND !empty ( $alien -> getWhatTheyDid ( ) ) 
+        ) {
+            // Gravar os dados no banco de dados
+            $dal -> save ( $alien );
+                    
+            // Confirma o sucesso com o usuário
+            $success = '<p>Obrigado por adicionar sua abdução.</p>' . 
+                '<p><a href="index.php">&lt;&lt; Voltar à página principal</a></p>';
+                
+        } else {
+            $error = '<p class="error">
+                        Por favor digite seu nome completo, data da abdução, quanto tempo você ficou
+                        abduzido, e uma breve descrição dos alienígenas.
+                    </p>';
+        }
+    }
+
+    require_once 'views/template-report.php';
