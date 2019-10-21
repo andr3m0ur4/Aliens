@@ -3,6 +3,7 @@
     $alien = new AlienAbduction ( );
 
     $error = false;
+    $success = false;
 
     if ( isset ( $_POST['submit'] ) ) {
 
@@ -22,7 +23,7 @@
             AND !empty ( $alien -> getLastName ( ) ) 
             AND !empty ( $alien -> getWhenItHappened ( ) ) 
             AND !empty ( $alien -> getHowLong ( ) ) 
-            AND !empty ( $alien -> getWhatTheyDid ( ) ) 
+            AND !empty ( $alien -> getAlienDescription ( ) ) 
         ) {
             // Gravar os dados no banco de dados
             $success = $dal -> save ( $alien );

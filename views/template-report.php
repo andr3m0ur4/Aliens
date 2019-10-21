@@ -41,7 +41,7 @@
             <input type="date" id="whenithappened" name="whenithappened" required value="<?= $alien -> getWhenItHappened ( ) ?>" />
             <br />
             <label for="howlong">Quanto tempo você ficou abduzido?</label>
-            <input type="text" id="howlong" name="howlong" value="<?= $alien -> gethowLong ( ) ?>" required /><br />
+            <input type="text" id="howlong" name="howlong" value="<?= $alien -> getHowLong ( ) ?>" required /><br />
             <label for="howmany">Quantos você viu?</label>
             <input type="text" id="howmany" name="howmany" value="<?= $alien -> getHowMany ( ) ?>" /><br />
             <label for="aliendescription">Descreva-os:</label>
