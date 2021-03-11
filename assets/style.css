@@ -3,8 +3,10 @@
   color: #FF0000;
 }
 
-table {  border: 1px solid #DDDDDD;
-  border-collapse: collapse;}
+table {
+  border: 1px solid #DDDDDD;
+  border-collapse: collapse;
+}
 
 tr.heading {
   font-size: large;
@@ -15,7 +17,9 @@ td {
   border: 1px solid #DDDDDD;
 }
 
-form label {  display: inline-block;  width: 225px;
+form label {
+  display: inline-block;
+  width: 225px;
   font-weight: bold;
 }
 
@@ -30,10 +34,24 @@ a:link {
 a:hover {
   background-color: #EEEEEE;
 }
-a:visited {
+
+a:visited {
   color: #002200;
 }
 
 a:active {
   color: #009900;
+}
+
+.youtube td {
+  vertical-align: bottom;
+  text-align: center
+}
+
+.youtube span {
+  font-size: smaller
+}
+
+.youtube img {
+  width: 100%;
 }

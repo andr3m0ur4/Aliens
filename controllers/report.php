@@ -3,6 +3,7 @@
     $alien = new AlienAbduction ( );
 
     $error = false;
+    $success = false;
 
     if ( isset ( $_POST['submit'] ) ) {
 

@@ -56,7 +56,7 @@
                         </td>
                         <td><strong>Viu Fang:</strong><br /> <?= $row -> getFangSpotted ( ) ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach ?>
             </table>
 
             <p>
@@ -68,9 +68,9 @@
 
             <h4>Vídeos de abduções mais recentes:</h4>
 
-            <?php require_once 'views/youtube.php'; ?>
+            <?php require_once 'controllers/youtube.php' ?>
 
-        <?php endif; ?>
+        <?php endif ?>
 
     </body>
 </html>

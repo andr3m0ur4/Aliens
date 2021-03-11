@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `aliendatabase` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `aliendatabase`;
+
 CREATE TABLE `aliens_abduction` (
   `abduction_id` INT AUTO_INCREMENT,
   `first_name` VARCHAR(30),
